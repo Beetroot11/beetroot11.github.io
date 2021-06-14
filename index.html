@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en" class="h-100">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="An instagram profiler">
+        <meta name="author" content="Andrew Misselbrook">
+        <title>Instagram Profiler</title>
+
+        <link href="assets\dist\css\bootstrap.min.css" rel="stylesheet">
+        <link href="cover.css" rel="stylesheet">
+    </head>
+    <body class="d-flex h-100 text-center text-white bg-dark">
+        <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+            <header class="mb-auto">
+                <div>
+                    <h3 class="float-md-start mb-0">Instagram Profiler</h3>
+                    
+                    <nav class="nav nav-masthead justify-content-center float-md-end">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link" href="#">Contact</a>
+                    </nav>
+                </div>
+            </header>
+            
+            <main class="px-3">
+                <h1>Instagram Profiler.</h1>
+                <p class="lead">Let's have a look at that profile! Providing there is an API for it!</p>
+                <p class="lead">
+                    <div class="input-group has-validation">
+                        <span class="input-group-text">@</span>
+                        <input type="text" class="form-control" id="username" placeholder="Username" required="">
+                        <div id="invalid-feedback" class="invalid-feedback">
+                            Your username is required.
+                        </div>
+                    </div>
+                    <hr class="my-4">
+                    <button id="submitProfile" class="w-100 btn btn-primary btn-lg">Checkout Profile</button>
+                </p>
+            </main>
+            
+            <footer class="mt-auto text-white-50">
+                <p><a href="https://www.andrewtech.co.uk/" target="_blank" class="text-white">Andrew Tech</a></p>
+            </footer>
+
+            <script>
+                document.getElementById("submitProfile").addEventListener("click", function() {
+                    var username = document.getElementById("username").value;
+                    if (username !== "") {
+                        let data = {element: "username"};
+                        
+                        fetch("/post/data/here", {
+                            method: "POST", 
+                            body: JSON.stringify(data)
+                        }).then(res => {
+                            console.log("Request complete! response:", res);
+                        });
+
+                    } else {
+                        document.getElementById("invalid-feedback").style.display = "block";
+                    }
+                });
+            </script>
+        </div>
+    </body>
+</html>
