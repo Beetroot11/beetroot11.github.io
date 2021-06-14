@@ -11,6 +11,24 @@
         <link href="cover.css" rel="stylesheet">
     </head>
     <body class="d-flex h-100 text-center text-white bg-dark">
+        <script>
+            window.fbAsyncInit = function() {
+              FB.init({
+                appId      : '402815377561549',
+                xfbml      : true,
+                version    : 'v11.0'
+              });
+              FB.AppEvents.logPageView();
+            };
+          
+            (function(d, s, id){
+               var js, fjs = d.getElementsByTagName(s)[0];
+               if (d.getElementById(id)) {return;}
+               js = d.createElement(s); js.id = id;
+               js.src = "https://connect.facebook.net/en_US/sdk.js";
+               fjs.parentNode.insertBefore(js, fjs);
+             }(document, 'script', 'facebook-jssdk'));
+          </script>
         <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
             <header class="mb-auto">
                 <div>
@@ -25,6 +43,13 @@
             
             <main class="px-3">
                 <h1>Instagram Profiler.</h1>
+
+                <div
+                    class="fb-like"
+                    data-share="true"
+                    data-width="450"
+                    data-show-faces="true">
+                </div>
                 <p class="lead">Let's have a look at that profile! Providing there is an API for it!</p>
                 <p class="lead">
                     <div class="input-group has-validation">
